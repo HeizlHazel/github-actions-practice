@@ -1,14 +1,30 @@
+# Workflow에 이름 붙이는 것
 name: Github Actions 실행 시켜보기
 
+# Event: 실행되는 시점을 설정
+# main이라는 branch에 push될 때, 아래의 workflow를 실행
 on:
   push:
     branches:
       - main
 
+# 하나의 workflow는 반드시 1개 이상의 job으로 구성된다
+# 여러 job은 기본적으로 병렬 수행된다(동시 수행 x)
 jobs:
+
+  # job을 식별하기 위한 id
   My-Deploy-Job:
+
+    # ubuntu환경의 가장 최신 버전(latest)
     runs-on: ubuntu-latest
 
+    # steps: 특정 작업을 수행하는 가장 작은 단위
+    # 하나의 job은 여러 steps으로 구성
     steps:
       - name: Hello World 찍기
         run: echo "Hello World"
+
+      - name: 여러 명령어 문장 작성하기
+        run: |
+          echo "Good"
+          echo "Morning"
